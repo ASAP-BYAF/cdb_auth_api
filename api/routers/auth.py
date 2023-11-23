@@ -4,7 +4,6 @@ import api.schemas.auth as auth_schemas
 from dotenv import load_dotenv
 import os
 from pathlib import Path
-from datetime import datetime, timedelta, timezone
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
