@@ -16,7 +16,6 @@ router = APIRouter()
 
 @router.post("/signin", response_model=None)
 def create_cookie(signin: auth_schemas.AuthBase):
-    print("signin1")
     if signin.password == PASS:
         response = JSONResponse(status_code=200, content={"message": "Cookie is set"})
         response.set_cookie(key="cookie", value="fake-cookie-session-value", samesite="None", secure=True, max_age=3600)
@@ -29,11 +28,9 @@ def create_cookie(signin: auth_schemas.AuthBase):
 def confirm_cookie(cookie:str |None = Cookie(default=None)):
     
     if cookie == "fake-cookie-session-value":
-        print("ok")
         response = JSONResponse(status_code=200, content={"message": "Cookie is confirmed"})
         return response
     else:
-        print("no")
         raise HTTPException(status_code=401, detail="Password is incorrect")
     
 @router.post("/signout")
