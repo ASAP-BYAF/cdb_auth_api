@@ -5,13 +5,14 @@ from dotenv import load_dotenv
 import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 環境変数を .env から読み込む。
 dotenv_path = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)
 origin = os.environ.get("ALLOW_ORIGIN")
 origin = origin.split(",")
+print(origin)
 
 app = FastAPI()
 app.include_router(auth.router)
