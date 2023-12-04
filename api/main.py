@@ -12,7 +12,6 @@ dotenv_path = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)
 origin = os.environ.get("ALLOW_ORIGIN")
 origin = origin.split(",")
-print(origin)
 
 app = FastAPI()
 app.include_router(auth.router)
